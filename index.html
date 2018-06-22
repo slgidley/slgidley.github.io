@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
     <title>USAC: E-Rate Applicants and Funding</title>
+	<link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/dijit/calcite.css">
     <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/css/esri.css">
     <style>
 
@@ -33,6 +34,10 @@
         "esri/InfoTemplate",
         "esri/config",
 		"esri/dijit/Popup",
+		"esri/dijit/Scalebar",
+		"dijit/layout/BorderContainer",
+		"dijit/layout/ContentPane",
+		"dojo/parser",
         "dojo/domReady!"
       ], function(
         Map, 
@@ -40,25 +45,26 @@
 		Color, 
 		SimpleMarkerSymbol, 
 		SimpleRenderer,  
-		InfoTemplate, 
-		esriConfig
+		InfoTemplate,
+		parser,
+		esriConfig,
+		Scalebar,
 		) {
-        
+
 		//Set up the map pane with map information//
         
         map = new Map("map", {
           basemap: "gray",
           center: [ -120, 35 ],
           zoom: 3
-        });
+        })
 		
 		//Add CSV data to map//
-        csv = new CSVLayer("Erate_Basic_Information_filtered_2018.csv", {
+        csv = new CSVLayer("Erate_Basic_Information_filtered_2018_rev.csv", {
           copyright:"E-Rate Information: USAC" 
         });
 		
 		//Setting up the point symbols using USAC colors//
-	//Setting up the point symbols using USAC colors//
         var darkBlue = new Color([0, 74, 212, 0.75]); 
         var marker = new SimpleMarkerSymbol("solid", 4, null, darkBlue);
         var renderer = new SimpleRenderer(marker);
@@ -74,18 +80,39 @@
 				"<b>Rural/Urban Status:</b> ${URStatus}<br />"	+ 
 				"<b>Enrollment:</b> ${Enrollment}<br />"				
 				);
-        
+		
 		//Adding Pop-up template to map with CSV info//
 		csv.setInfoTemplate(infoTemplate);
 		
 		//Adding CSV to map//
         map.addLayer(csv);
+		
+		map.on("load", function(){
+		
+			//Add in Scalebar on map load//
+			  new Scalebar({
+			  map: map,
+			  // "dual" displays both miles and kilometers
+			  // "english" is the default, which displays miles
+			  // use "metric" for kilometers
+			  attachTo:"bottom-left",
+			  scalebarUnit: "dual"
+			});
+		});
       });
 	  
     </script>
   </head>
 
-  <body>
-    <div id="map"></div>
+  <body class="calcite">
+    <div data-dojo-type="dijit/layout/BorderContainer"
+         data-dojo-props="design:'headline', gutters:false"
+         style="width: 100%; height: 100%; margin: 0;">
+
+      <div id="map"
+           data-dojo-type="dijit/layout/ContentPane"
+           data-dojo-props="region:'center'"
+           style="overflow:hidden;">
+      </div>
   </body>
 </html>
