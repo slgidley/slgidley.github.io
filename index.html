@@ -3,25 +3,29 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
-    <title>CSVLayer sample</title>
+    <title>USAC: E-Rate Applicants and Funding</title>
     <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/css/esri.css">
     <style>
-      html, body, #map {
+    
+
+	  html, body, #map{
         height: 100%;
         width: 100%;
         margin: 0;
         padding: 0;
       }
+	  
       body {
         background-color: #FFF;
         overflow: hidden;
         font-family: "Trebuchet MS";
       }
+	  
+	  
     </style>
     <script src="https://js.arcgis.com/3.24/"></script>
     <script>
       var map, csv;
-
       require([
         "esri/map", 
         "esri/layers/CSVLayer",
@@ -30,31 +34,43 @@
         "esri/renderers/SimpleRenderer",
         "esri/InfoTemplate",
         "esri/config",
+		"esri/dijit/Popup",
         "dojo/domReady!"
       ], function(
         Map, CSVLayer, Color, SimpleMarkerSymbol, SimpleRenderer, InfoTemplate, esriConfig
       ) {
         
-        // Use CORS
-        //esriConfig.defaults.io.corsEnabledServers.push("earthquake.usgs.gov"); // supports CORS
-
-        // Use proxy if the server doesn't support CORS
-        //esriConfig.defaults.io.proxyUrl = "https://developers.arcgis.com/proxy/";  
+		//Set up the map pane with map information//
         
         map = new Map("map", {
           basemap: "gray",
-          center: [ -60, -10 ],
-          zoom: 4 
+          center: [ -90, 35 ],
+          zoom: 3
         });
-        csv = new CSVLayer("Test.csv", {
-          copyright: "USGS.gov"
+		
+        csv = new CSVLayer("Erate_Basic_Information_filtered_2018.csv", {
+          copyright:"E-Rate Information: USAC" 
         });
-        var orangeRed = new Color([238, 69, 0, 0.5]); // hex is #ff4500
-        var marker = new SimpleMarkerSymbol("solid", 15, null, orangeRed);
+		
+		//Setting up the point symbols using USAC colors//
+        var darkBlue = new Color([0, 74, 212, 0.75]); 
+        var marker = new SimpleMarkerSymbol("solid", 4, null, darkBlue);
         var renderer = new SimpleRenderer(marker);
         csv.setRenderer(renderer);
-        var template = new InfoTemplate("${type}", "${place}");
-        csv.setInfoTemplate(template);
+        
+		//Setting up the pop-up template//
+		var infoTemplate = new InfoTemplate();
+		infoTemplate.setTitle("FY2018: ${AppNo}");
+		infoTemplate.setContent("<b>${OrgName}</b><br /><br />" +
+				"<b>Address:</b> ${Address1} ${Address2}<br />"+ 
+				"${City}, ${State} ${ZipCode}<br /><br />" + 
+				"<b>Requested Funding:</b> ${FundReqAmt}"		
+				);
+        
+		//Adding Pop-up template to map with CSV info//
+		csv.setInfoTemplate(infoTemplate);
+		
+		//Adding CSV to map//
         map.addLayer(csv);
       });
     </script>
