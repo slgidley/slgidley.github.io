@@ -3,8 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
-    <title>USAC: E-Rate Applicants and Funding</title>
-	<link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/dijit/calcite.css">
+    <title>USAC: E-Rate Applicants and Funding</title>>
     <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/css/esri.css">
     <style>
 
@@ -21,6 +20,7 @@
         font-family: "Trebuchet MS";
       }
 	  
+  
     </style>
     <script src="https://js.arcgis.com/3.24/"></script>
     <script>
@@ -44,11 +44,11 @@
 		CSVLayer, 
 		Color, 
 		SimpleMarkerSymbol, 
-		SimpleRenderer,  
+		SimpleRenderer, 
 		InfoTemplate,
 		parser,
 		esriConfig,
-		Scalebar,
+		Scalebar
 		) {
 
 		//Set up the map pane with map information//
@@ -72,13 +72,16 @@
         
 		//Setting up the pop-up template//
 		var infoTemplate = new InfoTemplate();
-		infoTemplate.setTitle("FY2018: ${AppNo}");
-		infoTemplate.setContent("<b>${OrgName}</b><br /><br />" +
-				"<b>Address:</b> ${Address1} ${Address2}<br />"+ 
+		infoTemplate.setTitle("App#: ${AppNo}");
+		infoTemplate.setContent("<b>${OrgName}</b><br />" +
+				"${Address1} ${Address2}<br />"+ 
 				"${City}, ${State} ${ZipCode}<br /><br />" + 
+				"<b>School Information:</b> <br />"+
+				"A ${URStatus} school in<br />"	+
+				"${CongDist} with<br />"	+ 
+				"${Enrollment} students enrolled<br /><br />" +
 				"<b>Requested Funding:</b> ${FundReqAmt}<br />" + 
-				"<b>Rural/Urban Status:</b> ${URStatus}<br />"	+ 
-				"<b>Enrollment:</b> ${Enrollment}<br />"				
+				"<b>Funding per student:</b> ${FundStud}"
 				);
 		
 		//Adding Pop-up template to map with CSV info//
@@ -98,21 +101,18 @@
 			  attachTo:"bottom-left",
 			  scalebarUnit: "dual"
 			});
+			
+			
 		});
       });
 	  
     </script>
   </head>
 
-  <body class="calcite">
-    <div data-dojo-type="dijit/layout/BorderContainer"
-         data-dojo-props="design:'headline', gutters:false"
-         style="width: 100%; height: 100%; margin: 0;">
+  <body>
 
-      <div id="map"
-           data-dojo-type="dijit/layout/ContentPane"
-           data-dojo-props="region:'center'"
-           style="overflow:hidden;">
+      <div id="map">
       </div>
+
   </body>
 </html>
