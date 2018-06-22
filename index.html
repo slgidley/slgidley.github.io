@@ -6,7 +6,6 @@
     <title>USAC: E-Rate Applicants and Funding</title>
     <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/css/esri.css">
     <style>
-    
 
 	  html, body, #map{
         height: 100%;
@@ -20,7 +19,6 @@
         overflow: hidden;
         font-family: "Trebuchet MS";
       }
-	  
 	  
     </style>
     <script src="https://js.arcgis.com/3.24/"></script>
@@ -37,8 +35,14 @@
 		"esri/dijit/Popup",
         "dojo/domReady!"
       ], function(
-        Map, CSVLayer, Color, SimpleMarkerSymbol, SimpleRenderer, InfoTemplate, esriConfig
-      ) {
+        Map, 
+		CSVLayer, 
+		Color, 
+		SimpleMarkerSymbol, 
+		SimpleRenderer,  
+		InfoTemplate, 
+		esriConfig
+		) {
         
 		//Set up the map pane with map information//
         
@@ -48,11 +52,13 @@
           zoom: 3
         });
 		
+		//Add CSV data to map//
         csv = new CSVLayer("Erate_Basic_Information_filtered_2018.csv", {
           copyright:"E-Rate Information: USAC" 
         });
 		
 		//Setting up the point symbols using USAC colors//
+	//Setting up the point symbols using USAC colors//
         var darkBlue = new Color([0, 74, 212, 0.75]); 
         var marker = new SimpleMarkerSymbol("solid", 4, null, darkBlue);
         var renderer = new SimpleRenderer(marker);
@@ -64,7 +70,9 @@
 		infoTemplate.setContent("<b>${OrgName}</b><br /><br />" +
 				"<b>Address:</b> ${Address1} ${Address2}<br />"+ 
 				"${City}, ${State} ${ZipCode}<br /><br />" + 
-				"<b>Requested Funding:</b> ${FundReqAmt}"		
+				"<b>Requested Funding:</b> ${FundReqAmt}<br />" + 
+				"<b>Rural/Urban Status:</b> ${URStatus}<br />"	+ 
+				"<b>Enrollment:</b> ${Enrollment}<br />"				
 				);
         
 		//Adding Pop-up template to map with CSV info//
@@ -73,6 +81,7 @@
 		//Adding CSV to map//
         map.addLayer(csv);
       });
+	  
     </script>
   </head>
 
