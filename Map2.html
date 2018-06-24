@@ -3,8 +3,8 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
-    <title>USAC: E-Rate Applicants by State</title>
-    <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/css/esri.css">
+    <title>USAC: E-Rate Applicant Information by State</title>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.7/esri/css/main.css">
 	<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
     <style>
 	  html, body{
@@ -108,100 +108,96 @@
     margin-left: 210px;
 	}
 	
-	/* Style the pop-up title */
-	.titlepane, .sizer{
-	background-color:#004AD4;
-	}
+	/* Style buttons
+    .btns {
+      margin: 0 auto;
+      justify-content: center;
+    }
 	
-
+	  .btn-switch {
+      flex-grow: 4;
+      background-color: rgba(34, 111, 14, 0.5);
+      color: #FFF;
+      margin: 1px;
+      width: 50%;
+      padding: 20px;
+      overflow: auto;
+      text-align: center;
+      cursor: pointer;
+      font-size: 0.7em;
+    }
+	
+	  .active-map {
+      color: #fff;
+      background-color: rgba(34, 111, 14, 1);
+    }
     </style>
-    <script src="https://js.arcgis.com/3.24/"></script>
+    <script src="https://js.arcgis.com/4.7/"></script>
     <script>
       var map, csv;
       require([
-        "esri/map", 
-        "esri/layers/FeatureLayer",
-        "esri/Color",
-        "esri/symbols/SimpleFillSymbol",
-		"esri/symbols/SimpleLineSymbol",
-        "esri/renderers/SimpleRenderer",
-        "esri/InfoTemplate",
-        "esri/config",
-		"esri/dijit/Popup",
-		"esri/dijit/Scalebar",
-		"dijit/layout/BorderContainer",
-		"dijit/layout/ContentPane",
-		"dojo/parser",
+        "esri/Map", 
+		"esri/views/MapView",
+		"esri/WebMap",
+		"esri/layers/Layer",
+		"dojo/dom",
+		"dojo/on",
         "dojo/domReady!"
       ], function(
-        Map, 
-		FeatureLayer, 
-		Color, 
-		SimpleFillSymbol,
-		SimpleLineSymbol,		
-		SimpleRenderer, 
-		InfoTemplate,
-		parser,
-		esriConfig,
-		Scalebar
+        Map,
+		MapView,
+		WebMap,
+		dom,
+		on
 		) {
-		//Set up the map pane with map information//
-        
-        map = new Map("map", {
-          basemap: "gray",
-          center: [ -120, 35 ],
-          zoom: 3
-        })
 		
-		//Add KML data to map//
-        var eratestates = new FeatureLayer("ERate_Aggregate.kml", {
-          copyright:"E-Rate Information: USAC" 
-        });
+		//Array holding all the webmap ids//
+		var webmapids = [
+		"d45e4120e9ea429abc27050fdb039258",
+		"de8075c151e745199c9eb51d92c00697"
+		];
 		
-		//Setting up the fill symbol using USAC colors//
-        var darkBlue = new Color([0, 74, 212, 0.75]); 
-        var symbol = (SimpleFillSymbol.STYLE_SOLID,
-            new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
-              new Color(darkBlue), 1),
-            new Color([109, 146, 155, 0.35]));
-        var renderer = new SimpleRenderer(symbol);
-        kml.setRenderer(renderer);
-        
-		//Setting up the pop-up template//
-		var infoTemplate = new InfoTemplate();
-		infoTemplate.setTitle("App#: ${AppNo}");
-		infoTemplate.setContent("<b>${OrgName}</b><br />" +
-				"${Address1} ${Address2}<br />"+ 
-				"${City}, ${State} ${ZipCode}<br /><br />" + 
-				"<b>School Information:</b> <br />"+
-				"A ${URStatus} school in<br />"	+
-				"${CongDist} with<br />"	+ 
-				"${Enrollment} students enrolled<br /><br />" +
-				"<b>Requested Funding:</b> ${FundReqAmt}<br />" + 
-				"<b>Funding per student:</b> ${FundStud}"
-				);
-		
-		//Adding Pop-up template to map with KML info//
-		csv.setInfoTemplate(infoTemplate);
-		
-		//Adding KML to map//
-        map.addLayer(kml);
-		
-		map.on("load", function(){
-		
-			//Add in Scalebar on map load//
-			  new Scalebar({
-			  map: map,
-			  // "dual" displays both miles and kilometers
-			  // "english" is the default, which displays miles
-			  // use "metric" for kilometers
-			  attachTo:"top-right",
-			  scalebarUnit: "dual"
+		//Creating multiple webmap instances//
+		var webmaps = webmapids.map(function(webmapid) {
+        return new WebMap({
+          portalItem: { // autocasts as new PortalItem()
+            id: webmapid
+				}
 			});
-			
-			
 		});
+		
+		//Start view with first webmap//
+		var view = new MapView({
+        map: webmaps[0],
+        container: "map"
+		});
+		
+		function changeMap(){
+		
+		
+      on(document.querySelector(".btns"), ".btn-switch:click", function(
+        event) {
+        /************************************************************
+         * On a button click, change the map of the View
+         ************************************************************/
+        var id = event.target.getAttribute("value");
+        if (id) {
+          var webmap = webmaps[id];
+          view.map = webmap;
+          var nodes = document.querySelectorAll(".btn-switch");
+          for (var idx = 0; idx < nodes.length; idx++) {
+            var node = nodes[idx];
+            var mapIndex = node.getAttribute("value");
+            if (mapIndex === id) {
+              node.classList.add("active-map");
+            } else {
+              node.classList.remove("active-map");
+            }
+          }
+        }
       });
+    });
+		
 	  
     </script>
   </head>
@@ -219,17 +215,13 @@
 
 	<div class="summary">
 	<p>Choropleth maps help visualize aggregate data, in this case applicant requests for funding aggregated by state. However, how the data is aggregated can greatly affect to appearance and conclusions drawn from the data. Click below to see how changing the aggregation changes the choropleth map.</p> 
-	<br />
-	<input id="chkA1" name="symbolization" type="radio" value="applicants"/>
-	<label for="chkA1">Number of Applicants</label>
-	<br />
-	<input id="chkA2" name="symbolization" type="radio" value="funding"/>
-	<label for="chkA2">Level of Funding</label>
-	<br />
-	<input id="chkA3" name="symbolization" type="radio" value="applicants"/>
-	<label for="chkA3">Avg. Funding per Applicantion</label>
-	<br />
-	<br />
+
+    <div class="btns">
+      <button class="btn-switch active-map" value="0">No Choropleth</button>
+      <button class="btn-switch" value="1">Application Numbers</button>
+      <button class="btn-switch" value="2">2015 European Sea Arrivals</button>
+	</div>
+	  
 	<p>Additional information can be found on the USAC's <a href="https://opendata.usac.org/">Open Data Portal.</a></p>
 	</div>
 	<div class="updated">
