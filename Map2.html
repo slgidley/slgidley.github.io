@@ -18,7 +18,7 @@
       body {
         background-color: #f6F6F6;
         overflow: hidden;
-        font-family: "Trebuchet MS";
+        font-family: 'Open Sans';
       }
 	 	 
 	/* Style the side navigation */
@@ -108,21 +108,46 @@
 	}
 	
 	/*Style Legend Box*/
-	.legend {
+	.legendbox {
 	position: absolute;
 	background-color: #FFFFFF;
     bottom: 0px;
     right: 0px;
-    width: 200px;
-    height: 100px;
-    border: 2px solid #004AD4;
+    width: 210px;
+    height: 150px;
+    border: 1px solid #696969;
 	overflow: auto;
 	}
 	
-	.legend p {
+	.legendbox p {
 	margin: 0px;
+	font-family: 'Open Sans';
+	font-weight: bold;
+	font-size: 0.75em;
+	color: #000000;
+	text-align:center;
+	}
+	
+	/*Style legend table*/
+	.legendTable {
+	font-family: 'Open Sans';
 	font-size: 0.70em;
+	margin-left: 10px;
+	padding: 1px;
+	width:90%;
+	height:10px;
 	color: #696969;
+	empty-cells: show;
+	}
+	
+	.legendTable td {
+	 padding: 2px;
+	 text-align: left;
+	}
+	
+	#color1 {
+	width: 20px;
+	background-color: #004AD4;
 	}
 	
 	/* Style buttons */
@@ -201,9 +226,22 @@
         container: "map" 
 		});
 	     
-		//
+		//Setting up Legend Variables for use below//
+		var legendTitle = document.getElementById("legendTitle");
+		var legendColor1 = document.getElementById("color1");
+		var legendLabel1 = document.getElementById("label1");
+		var legendColor2 = document.getElementById("color2");
+		var legendLabel2 = document.getElementById("label2");
+		var legendColor3 = document.getElementById("color3");
+		var legendLabel3 = document.getElementById("label3");
+		var legendColor4 = document.getElementById("color4");
+		var legendLabel4 = document.getElementById("label4");
+		var legendColor5 = document.getElementById("color5");
+		var legendLabel5 = document.getElementById("label5");
+		var legendColor6 = document.getElementById("color6");
+		var legendLabel6 = document.getElementById("label6");
 		  
-		//Set the map id if the first button is clicked//
+		//Set the map id, button, and legend if the first button is clicked//
 		var button1Click = document.getElementById("button1");
 		button1Click.addEventListener("click", mapChangeOne);
 		
@@ -215,9 +253,23 @@
 		button3Click.classList.remove("active");
 		button2Click.classList.remove("active");
 		button1Click.classList.add("active");
+		
+		legendTitle.innerHTML = "E-Rate Info. by State";
+		legendColor1.style.backgroundColor = "#004AD4";
+		legendLabel1.innerHTML = "States";
+		legendColor2.style.backgroundColor = "#FFFFFF";
+		legendLabel2.innerHTML = "&nbsp";
+		legendColor3.style.backgroundColor = "#FFFFFF";
+		legendLabel3.innerHTML = "&nbsp";
+		legendColor4.style.backgroundColor = "#FFFFFF";
+		legendLabel4.innerHTML = "&nbsp";
+		legendColor5.style.backgroundColor = "#FFFFFF";
+		legendLabel5.innerHTML = "&nbsp";
+		legendColor6.style.backgroundColor = "#FFFFFF";
+		legendLabel6.innerHTML = "&nbsp";
 		}
 		
-		//Set the map id if the second button is clicked//
+		//Set the map id, button, and legend if the second button is clicked//
 		var button2Click = document.getElementById("button2");
 		button2Click.addEventListener("click", mapChangeTwo);
 		
@@ -229,9 +281,23 @@
 		button3Click.classList.remove("active");
 		button2Click.classList.add("active");
 		button1Click.classList.remove("active");
+		
+		legendTitle.innerHTML = "Number of Applicants by State";
+		legendColor1.style.backgroundColor = "rgb(59, 93, 135)";
+		legendLabel1.innerHTML = "1,701 - 2,900 Applicants";
+		legendColor2.style.backgroundColor = "rgb(61, 109, 162)";
+		legendLabel2.innerHTML = "1,101 - 1,700 Applicants";
+		legendColor3.style.backgroundColor = "rgb(62, 124, 190)";
+		legendLabel3.innerHTML = "601 - 1,100 Applicants";
+		legendColor4.style.backgroundColor = "rgb(179, 167, 82)";
+		legendLabel4.innerHTML = "301 - 600 Applicants";
+		legendColor5.style.backgroundColor = "rgb(204, 190, 106)";
+		legendLabel5.innerHTML = "101 - 300 Applicants";
+		legendColor6.style.backgroundColor = "rgb(255, 236, 153)";
+		legendLabel6.innerHTML = "0 - 100 Applicants";
 		}
 		
-		//Set the map id if the third button is clicked//
+		//Set the map id, button, and legend if the third button is clicked//
 		var button3Click = document.getElementById("button3");
 		button3Click.addEventListener("click", mapChangeThree);
 		
@@ -243,9 +309,23 @@
 		button3Click.classList.add("active");
 		button2Click.classList.remove("active");
 		button1Click.classList.remove("active");
+		
+		legendTitle.innerHTML = "Total Requested Funding by State";
+		legendColor1.style.backgroundColor = "rgb(59, 93, 135)";
+		legendLabel1.innerHTML = "$194,602,001 - $353,952,000";
+		legendColor2.style.backgroundColor = "rgb(61, 109, 162)";
+		legendLabel2.innerHTML = "$78,729,001 - $194,602,000";
+		legendColor3.style.backgroundColor = "rgb(62, 124, 190)";
+		legendLabel3.innerHTML = "$46,536,001 - $78,729,000";
+		legendColor4.style.backgroundColor = "rgb(179, 167, 82)";
+		legendLabel4.innerHTML = "$25,363,001 - $46,536,000";
+		legendColor5.style.backgroundColor = "rgb(204, 190, 106)";
+		legendLabel5.innerHTML = "$10,278,001 - $25,363,000";
+		legendColor6.style.backgroundColor = "rgb(255, 236, 153)";
+		legendLabel6.innerHTML = "$250,000 - $10,278,001";
 		}
 		
-		//Set the map id if the third button is clicked//
+		//Set the map id, button, and legend if the fourth button is clicked//
 		var button4Click = document.getElementById("button4");
 		button4Click.addEventListener("click", mapChangeFour);
 		
@@ -257,9 +337,23 @@
 		button3Click.classList.remove("active");
 		button2Click.classList.remove("active");
 		button1Click.classList.remove("active");
+		
+		legendTitle.innerHTML = "Avg. Funding per Applicant";
+		legendColor1.style.backgroundColor = "rgb(59, 93, 135)";
+		legendLabel1.innerHTML = "$210,601 - $1,322,400";
+		legendColor2.style.backgroundColor = "rgb(61, 109, 162)";
+		legendLabel2.innerHTML = "$144,201- $210,600";
+		legendColor3.style.backgroundColor = "rgb(62, 124, 190)";
+		legendLabel3.innerHTML = "$100,301 - $144,200";
+		legendColor4.style.backgroundColor = "rgb(179, 167, 82)";
+		legendLabel4.innerHTML = "$57,301 - $100,300";
+		legendColor5.style.backgroundColor = "rgb(204, 190, 106)";
+		legendLabel5.innerHTML = "$38,401 - $57,300";
+		legendColor6.style.backgroundColor = "rgb(255, 236, 153)";
+		legendLabel6.innerHTML = "$20,200 - $38,400";
 		}
 		
-		//Set the map id if the third button is clicked//
+		//Set the map id, button, and legend if the fifth button is clicked//
 		var button5Click = document.getElementById("button5");
 		button5Click.addEventListener("click", mapChangeFive);
 		
@@ -271,6 +365,20 @@
 		button3Click.classList.remove("active");
 		button2Click.classList.remove("active");
 		button1Click.classList.remove("active");
+		
+		legendTitle.innerHTML = "Avg. Funding per Student";
+		legendColor1.style.backgroundColor = "rgb(59, 93, 135)";
+		legendLabel1.innerHTML = "$82.01 - $165.00";
+		legendColor2.style.backgroundColor = "rgb(61, 109, 162)";
+		legendLabel2.innerHTML = "$35.01 - $82.00";
+		legendColor3.style.backgroundColor = "rgb(62, 124, 190)";
+		legendLabel3.innerHTML = "$20.01 - $35.00";
+		legendColor4.style.backgroundColor = "rgb(179, 167, 82)";
+		legendLabel4.innerHTML = "$11.61 - $20.00";
+		legendColor5.style.backgroundColor = "rgb(204, 190, 106)";
+		legendLabel5.innerHTML = "$5.91 - $11.60";
+		legendColor6.style.backgroundColor = "rgb(255, 236, 153)";
+		legendLabel6.innerHTML = "$0.50 - $5.90";
 		}
 		
 		//Setting up the scale bar//
@@ -318,10 +426,35 @@
 	
 </div>
 	<div id="map" class="main">
-		<div class="legend">
-			<p class="legendTitle">E-Rate Info. By State</p>
+		<div class="legendbox">
+			<p id="legendTitle">E-Rate Info. by State</p>
 			<div>
-				<p class="label1">States</p>
+				<table class="legendTable">
+					<tr>
+						<td id="color1"></td>
+						<td id="label1">States</td>
+					</tr>
+					<tr>
+						<td id="color2"></td>
+						<td id="label2">&nbsp;</td>
+					</tr>
+					<tr>
+						<td id="color3"></th>
+						<td id="label3">&nbsp;</td>
+					</tr>
+					<tr>
+						<td id="color4"></td>
+						<td id="label4">&nbsp;</td>
+					</tr>
+					<tr>
+						<td id="color5"></td>
+						<td id="label5">&nbsp;</td>
+					</tr>
+					<tr>
+						<td id="color6"></td>
+						<td id="label6">&nbsp;</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 	</div>
