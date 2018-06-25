@@ -1,230 +1,333 @@
+
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
-    <title>USAC: E-Rate Applicants and Funding</title>
-    <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/css/esri.css">
-	<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
-    <style>
-	  html, body{
-        height: 100%;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-      }
-	  
-	/* Style the body */	  
-      body {
-        background-color: #f6F6F6;
-        overflow: hidden;
-        font-family: "Trebuchet MS";
-      }
+<html lang="en">
+<head>
+  <title>Susan L. Gidley's Portfolio Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+	
+	body {
+    font: 400 15px Open Sans, sans-serif;
+    line-height: 1.8;
+    color: #6C7A89;
+	background-color: #E0E7E9;
+	}
+	
+	h2 {
+	color: #354649;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 30px;
+	}
 
-	 	 
-	/* Style the side navigation */
-	.sidenav {
-    height: 100%;
-    width: 205px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-	padding-right: 5px;
-    background-color: #F6F6F6;
-    overflow-x: hidden;
-	border-color: #004AD4;
-	border-width: 3px;
-	border-style: solid;
+	h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    font-weight: 400;
+    margin-bottom: 30px;
 	}
 	
-	.sidetitle {
-	border-bottom: 1px inset #696969;
-	margin-left: 5px;
-	margin-right: 5px;
-	margin-top: 7px;
-	margin-bottom: 5px;
-	}
-	
-	.logo {
-	margin: 5px;
-	}
-	
-	.summary {
-	margin-left: 5px;
-	margin-right: 5px;
-	margin-top: 5px;
-	margin-bottom: 0px;
-	padding: 5px;
-	background: #FFFFFF;
-	border: 1px solid #C0C0C0;
-	}
-	
-	.updated {
-	margin-left: 5px;
-	margin-right: 5px;
-	margin-top: 0px;
-	margin-bottom: 0px;
-	padding: 5px;
-	background: #FFFFFF;
-	border-left: 1px solid #C0C0C0;
-	border-right: 1px solid #C0C0C0;
-	border-bottom: 1px solid #C0C0C0;
-	}
-	
-	.sidenav h4, p {
+	.navbar {
+    margin-bottom: 0;
+    background-color: #354649;
+    z-index: 9999;
+    border: 0;
 	font-family: 'Open Sans';
-	margin-bottom: 0px;
-	margin-top: 0px;
+    font-size: 12px 
+    line-height: 1.42857143 ;
+    letter-spacing: 4px;
+    border-radius: 0;
 	}
-	
-	.summary p {
-	font-size: 0.75em;
-	color: #696969;
-	}
-	 
-	.updated p {
-	font-size: 0.70em;
-	color: #696969;
-	}	 
-	  
-	.sidenav a:visited {
-	color: #004AD4;
-	}
-	
-	.tags {
-	color: #004AD4;
-	text-decoration: underline;
-	}
-	  
-	 /* Style the main */
-	.main {
-	height:100%;
-    margin-left: 210px;
-	}
-	
-	/* Style the pop-up title */
-	.titlepane, .sizer{
-	background-color:#004AD4;
-	}
-	
 
-    </style>
-    <script src="https://js.arcgis.com/3.24/"></script>
-    <script>
-      var map, csv;
-      require([
-        "esri/map", 
-        "esri/layers/CSVLayer",
-        "esri/Color",
-        "esri/symbols/SimpleMarkerSymbol",
-        "esri/renderers/SimpleRenderer",
-        "esri/InfoTemplate",
-        "esri/config",
-		"esri/dijit/Popup",
-		"esri/dijit/Scalebar",
-		"dijit/layout/BorderContainer",
-		"dijit/layout/ContentPane",
-		"dojo/parser",
-        "dojo/domReady!"
-      ], function(
-        Map, 
-		CSVLayer, 
-		Color, 
-		SimpleMarkerSymbol, 
-		SimpleRenderer, 
-		InfoTemplate,
-		parser,
-		esriConfig,
-		Scalebar
-		) {
-		//Set up the map pane with map information//
-        
-        map = new Map("map", {
-          basemap: "gray",
-          center: [ -120, 35 ],
-          zoom: 3
-        })
+	.navbar li a, .navbar .navbar-brand {
+    color: #E0E7E9 !important;
+	}
+
+	.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #354649 !important; 
+    background-color: #E0E7E9 !important;
+	}
+
+	.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+	}
+	
+	.jumbotron {
+	font-family: 'Roboto';
+    background-color: #354649; /* Harbor color scheme: color 1*/
+    color: #E0E7E9;
+	padding: 100px 25px;
+		}
+	
+	.logo-small {
+    color: #A3C6C4; /*Harbor color scheme: color 3*/
+    font-size: 50px;
+	}
+
+	.logo {
+    color: #E0E7E9;
+    font-size: 200px;
+	}
+	
+	@media screen and (max-width: 768px) {
+    .col-sm-4 {
+        text-align: center;
+        margin: 25px 0;
+		}
+	}	
+	
+	.thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+	}
+
+	.thumbnail img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+	}
+	
+	.container-fluid {
+    padding: 60px 50px;
+	}
 		
-		//Add CSV data to map//
-        csv = new CSVLayer("Erate_Basic_Information_filtered_2018_rev.csv", {
-          copyright:"E-Rate Information: USAC" 
-        });
-		
-		//Setting up the point symbols using USAC colors//
-        var darkBlue = new Color([0, 74, 212, 0.75]); 
-        var marker = new SimpleMarkerSymbol("solid", 4, null, darkBlue);
-        var renderer = new SimpleRenderer(marker);
-        csv.setRenderer(renderer);
-        
-		//Setting up the pop-up template//
-		var infoTemplate = new InfoTemplate();
-		infoTemplate.setTitle("App#: ${AppNo}");
-		infoTemplate.setContent("<b>${OrgName}</b><br />" +
-				"${Address1} ${Address2}<br />"+ 
-				"${City}, ${State} ${ZipCode}<br /><br />" + 
-				"<b>School Information:</b> <br />"+
-				"A ${URStatus} school in<br />"	+
-				"${CongDist} with<br />"	+ 
-				"${Enrollment} students enrolled<br /><br />" +
-				"<b>Requested Funding:</b> ${FundReqAmt}<br />" + 
-				"<b>Funding per student:</b> ${FundStud}"
-				);
-		
-		//Adding Pop-up template to map with CSV info//
-		csv.setInfoTemplate(infoTemplate);
-		
-		//Adding CSV to map//
-        map.addLayer(csv);
-		
-		map.on("load", function(){
-		
-			//Add in Scalebar on map load//
-			  new Scalebar({
-			  map: map,
-			  // "dual" displays both miles and kilometers
-			  // "english" is the default, which displays miles
-			  // use "metric" for kilometers
-			  attachTo:"bottom-left",
-			  scalebarUnit: "dual"
-			});
-			
-			
-		});
+	.bg-grey {
+	font-family: 'Open Sans';
+    background-color: #6C7A89; /*Harbor color scheme: color 2*/
+	color: #E0E7E9;
+	}
+	
+	.bg-grey h2{
+	color:#A3C6C4;
+	}
+	
+	footer .glyphicon {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #E0E7E9;
+}	
+	
+</style>
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+
+   // Make sure this.hash has a value before overriding default behavior
+  if (this.hash !== "") {
+
+    // Prevent default anchor click behavior
+    event.preventDefault();
+
+    // Store hash
+    var hash = this.hash;
+
+    // Using jQuery's animate() method to add smooth page scroll
+    // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+    $('html, body').animate({
+      scrollTop: $(hash).offset().top
+    }, 900, function(){
+
+      // Add hash (#) to URL when done scrolling (default click behavior)
+      window.location.hash = hash;
       });
-	  
-    </script>
+    } // End if
+  });
+})
+</script> 
+
   </head>
+<body>
 
-  <body>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
-<div class="sidenav">
-	<div class="logo">
-		<img src="logo-footer.png">
-	</div>
-	
-	<div class="sidetitle">
-	<h4>E-Rate Request for Discount on Services: Basic Information</h4>
-	</div>
+ <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#services">EXPERIENCE</a></li>
+        <li><a href="#portfolio">PORTFOLIO</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </div>
+  </div>
+</nav> 
 
-	<div class="summary">
-	<p>This map shows each individual application from schools and libraries recieved in Fiscal Year 2018. Clicking on the points displays a pop-up with information provided by applicants on FCC Form 470.</p> 
-	<br />
-	<p>Additional information can be found on the USAC's <a href="https://opendata.usac.org/">Open Data Portal.</a></p>
-	</div>
-	<div class="updated">
-	<p><b>Updated:</b> June 26, 2018</p>
-	<br />
-	<p><b>Tags:</b> <font class="tags">schools</font>, <font class="tags">libraries</font>, <font class="tags">schools and libraries</font>, <font class="tags">erate</font>, <font class="tags">discount on services</font>, <font class="tags">basic services</font>, <font class="tags">applicant information</font>, <font class="tags">visualization</font>, <font class="tags">point map</font>, <font class="tags">usac</font>, <font class="tags">universal service fund</font></p>
-	</div>
-	
+<div class="jumbotron">
+  <h1>Github Portfolio</h1>
+  <p>Online projects by Susan Lee Gidley</p>
 </div>
 
-<div id="map" class="main">
+
+<div id="about" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+      <h2>About Susan Gidley</h2>
+      <h4>Sr. GIS Analyst and sUAS Pilot looking for new opportunities</h4>
+      <p>Lorem ipsum..</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="material-icons" style="font-size:150px;">beenhere</span>
+    </div>
+  </div>
 </div>
 
-  </body>
+<div class="container-fluid bg-grey">
+  <div class="row">
+    <div class="col-sm-4">
+            <span class="material-icons" style="font-size:150px;">computer</span>
+    </div>
+    <div class="col-sm-8">
+      <h2>Technology Focused</h2>
+      <h4><strong>Technical Expert:</strong> Familiar with a wide variety of software, hardware, and programming languages</h4>
+      <p><strong>Software:</strong> Our vision Lorem ipsum..</p>
+	  <p><strong>Hardware:</strong> Our vision Lorem ipsum..</p>
+	  <p><strong>Programming:</strong> Our vision Lorem ipsum..</p>
+    </div>
+  </div>
+</div>
+
+<div id="services" class="container-fluid text-center">
+  <h2>Experience</h2>
+  <h4>I have worked in the following business areas</h4>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <span class="material-icons" style="font-size:36px;">account_balance</span>
+      <h4>DoD/Government</h4>
+      <p>Lorem ipsum dolor sit amet..</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="material-icons" style="font-size:36px;">local_hospital</span>
+      <h4>Emergency Management</h4>
+      <p>Lorem ipsum dolor sit amet..</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="material-icons" style="font-size:36px;">terrain</span>
+      <h4>UAV/Drone Mapping</h4>
+      <p>Lorem ipsum dolor sit amet..</p>
+    </div>
+    </div>
+    <br><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <span class="material-icons" style="font-size:36px;">battery_charging_full</span>
+      <h4>Utilities</h4>
+      <p>Lorem ipsum dolor sit amet..</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="material-icons" style="font-size:36px;">location_city</span>
+      <h4>Buildings/Infrastructure</h4>
+      <p>Lorem ipsum dolor sit amet..</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="material-icons" style="font-size:36px;">satellite</span>
+      <h4>Remote Sensing</h4>
+      <p>Lorem ipsum dolor sit amet..</p>
+    </div>
+	</div>
+	<br><br>
+    <div class="row">
+    <div class="col-sm-4">
+      <span class="material-icons" style="font-size:36px;">store</span>
+      <h4>Resource and Asset Management</h4>
+      <p>Lorem ipsum dolor sit amet..</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="material-icons" style="font-size:36px;">gps_fixed</span>
+      <h4>Field/Data Collection</h4>
+      <p>Lorem ipsum dolor sit amet..</p>
+    </div>
+    <div class="col-sm-4">
+            <span class="material-icons" style="font-size:36px;">local_florist</span>
+      <h4>Environment and Natural Resources</h4>
+      <p>Lorem ipsum dolor sit amet..</p>
+    </div>
+  </div>
+  
+</div>
+
+<div id="portfolio" class="container-fluid text-center bg-grey">
+  <h2>Portfolio</h2>
+  <h4>What we have created</h4>
+	  <div class="row text-center">
+		<div class="col-sm-4">
+		  <div class="thumbnail">
+			<img src="paris.jpg" alt="Paris">
+			<p><strong>Paris</strong></p>
+			<p>Yes, we built Paris</p>
+		  </div>
+		</div>
+		<div class="col-sm-4">
+		  <div class="thumbnail">
+			<img src="newyork.jpg" alt="New York">
+			<p><strong>New York</strong></p>
+			<p>We built New York</p>
+		  </div>
+		</div>
+		<div class="col-sm-4">
+		  <div class="thumbnail">
+			<img src="sanfran.jpg" alt="San Francisco">
+			<p><strong>San Francisco</strong></p>
+			<p>Yes, San Fran is ours</p>
+		  </div>
+		</div>
+	</div>
+</div>
+
+ <div id="contact" class="container-fluid">
+  <h2 class="text-center">CONTACT</h2>
+  <div class="row">
+    <div class="col-sm-5">
+      <p>Contact Information</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> Washington, DC Metro Area</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> slgidley@gmail.com</p>
+    </div>
+    <div class="col-sm-7">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <button class="btn btn-default pull-right" type="submit">Send</button>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p>Bootstrap Theme Made By <a href="https://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p>
+</footer>
+
+</body>
 </html>
-
-
-
