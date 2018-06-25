@@ -20,7 +20,6 @@
         overflow: hidden;
         font-family: "Trebuchet MS";
       }
-
 	 	 
 	/* Style the side navigation */
 	.sidenav {
@@ -108,28 +107,26 @@
     margin-left: 210px;
 	}
 	
-	/* Style buttons
-    .btns {
-      margin: 0 auto;
-      justify-content: center;
-    }
+	/* Style buttons */
 	
-	  .btn-switch {
-      flex-grow: 4;
-      background-color: rgba(34, 111, 14, 0.5);
-      color: #FFF;
-      margin: 1px;
-      width: 50%;
-      padding: 20px;
-      overflow: auto;
+	  .default {
+	  width: 150px;
+      background-color: #C0C0C0;
+      border: none;
+      color: #696969;
+      padding: 2px 2px;
+	  font-family: 'Open Sans';
+      text-align: center;
+      text-decoration: bold;
+	  margin: 2px 2px;
       text-align: center;
       cursor: pointer;
       font-size: 0.7em;
     }
 	
 	  .active-map {
-      color: #fff;
-      background-color: rgba(34, 111, 14, 1);
+      color: #000000;
+      background-color: #89BAF4;
     }
     </style>
     <script src="https://js.arcgis.com/4.7/"></script>
@@ -140,6 +137,8 @@
 		"esri/views/MapView",
 		"esri/WebMap",
 		"esri/layers/Layer",
+		"esri/widgets/ScaleBar",
+		"esri/widgets/Legend",
 		"dojo/dom",
 		"dojo/on",
         "dojo/domReady!"
@@ -147,6 +146,8 @@
         Map,
 		MapView,
 		WebMap,
+		Legend,
+		ScaleBar,
 		dom,
 		on
 		) {
@@ -169,41 +170,67 @@
 		//Start view with first webmap//
 		var view = new MapView({
         map: webmaps[0],
-        container: "map"
+        container: "map" 
 		});
 		
-		function changeMap(){
+		//Set the map id if the first button is clicked//
+		var button1Click = document.getElementById("button1");
+		button1Click.addEventListener("click", mapChangeOne);
+		
+		function mapChangeOne (){
+		var webmap = webmaps[0]
+		view.map = webmap;
+		}
+		
+		//Set the map id if the second button is clicked//
+		var button2Click = document.getElementById("button2");
+		button2Click.addEventListener("click", mapChangeTwo);
+		
+		function mapChangeTwo (){
+		var webmap = webmaps[1]
+		view.map = webmap;
+		}
+		
+		//Set the map id if the third button is clicked//
+		var button3Click = document.getElementById("button3");
+		button3Click.addEventListener("click", mapChangeThree);
+		
+		function mapChangeThree (){
+		var webmap = webmaps[2]
+		view.map = webmap;
+		}
+		
+		var featureLayer = webmapids.layers.getItemAt(0);
+		
+		var legend = new Legend({
+            view: view,
+            layerInfos: [{
+              layer: featureLayer,
+			  title: "NY Educational Attainment"
+            }]
+          });
+
+          // Add widget to the bottom right corner of the view
+          view.ui.add(legend, "bottom-right");
 		
 		
-      on(document.querySelector(".btns"), ".btn-switch:click", function(
-        event) {
-        /************************************************************
-         * On a button click, change the map of the View
-         ************************************************************/
-        var id = event.target.getAttribute("value");
-        if (id) {
-          var webmap = webmaps[id];
-          view.map = webmap;
-          var nodes = document.querySelectorAll(".btn-switch");
-          for (var idx = 0; idx < nodes.length; idx++) {
-            var node = nodes[idx];
-            var mapIndex = node.getAttribute("value");
-            if (mapIndex === id) {
-              node.classList.add("active-map");
-            } else {
-              node.classList.remove("active-map");
-            }
-          }
-        }
+		//Setting up the scale bar//
+		var scaleBar = new ScaleBar ({
+		view:view,
+		unit: "dual"
+		});
+		
+		//Adding scalebar to map//
+		view.ui.add(scaleBar, {
+        position: "bottom-left"
       });
+		
     });
 		
 	  
     </script>
   </head>
-
   <body>
-
 <div class="sidenav">
 	<div class="logo">
 		<img src="logo-footer.png">
@@ -212,16 +239,11 @@
 	<div class="sidetitle">
 	<h4>E-Rate Applicants: Aggregated by State</h4>
 	</div>
-
 	<div class="summary">
 	<p>Choropleth maps help visualize aggregate data, in this case applicant requests for funding aggregated by state. However, how the data is aggregated can greatly affect to appearance and conclusions drawn from the data. Click below to see how changing the aggregation changes the choropleth map.</p> 
-
-    <div class="btns">
-      <button class="btn-switch active-map" value="0">No Choropleth</button>
-      <button class="btn-switch" value="1">Application Numbers</button>
-      <button class="btn-switch" value="2">2015 European Sea Arrivals</button>
-	</div>
-	  
+      <button id="button1" class="default active-map">No Choropleth</button>
+      <button id="button2" class="default">Number of Applications</button>
+      <button id="button3" class="default">Total Requested Funding</button>
 	<p>Additional information can be found on the USAC's <a href="https://opendata.usac.org/">Open Data Portal.</a></p>
 	</div>
 	<div class="updated">
@@ -231,9 +253,7 @@
 	</div>
 	
 </div>
-
 <div id="map" class="main">
 </div>
-
   </body>
 </html>
