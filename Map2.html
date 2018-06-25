@@ -7,179 +7,185 @@
     <link rel="stylesheet" href="https://js.arcgis.com/4.7/esri/css/main.css">
 	<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
     <style>
-	  html, body{
-        height: 100%;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-      }
+	
+	/*CSS Copyright S.L. Gidley 2018. This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.*/
+	
+	/*Cover entire screen*/
+	
+	html, body{
+		height: 100%;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+    }
 	  
 	/* Style the body */	  
-      body {
+    body {
         background-color: #f6F6F6;
         overflow: hidden;
         font-family: 'Open Sans';
-      }
+    }
 	 	 
 	/* Style the side navigation */
 	.sidenav {
-    height: 100%;
-    width: 205px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-	padding-right: 5px;
-    background-color: #F6F6F6;
-    overflow-x: hidden;
-	border-color: #004AD4;
-	border-width: 3px;
-	border-style: solid;
+		height: 100%;
+		width: 205px;
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		padding-right: 5px;
+		background-color: #F6F6F6;
+		overflow-x: hidden;
+		border-color: #004AD4;
+		border-width: 3px;
+		border-style: solid;
 	}
 	
 	.sidetitle {
-	border-bottom: 1px inset #696969;
-	margin-left: 5px;
-	margin-right: 5px;
-	margin-top: 7px;
-	margin-bottom: 5px;
+		border-bottom: 1px inset #696969;
+		margin-left: 5px;
+		margin-right: 5px;
+		margin-top: 7px;
+		margin-bottom: 5px;
 	}
 	
 	.logo {
-	margin: 5px;
+		margin: 5px;
 	}
 	
 	.summary {
-	margin-left: 5px;
-	margin-right: 5px;
-	margin-top: 5px;
-	margin-bottom: 0px;
-	padding: 5px;
-	background: #FFFFFF;
-	border: 1px solid #C0C0C0;
+		margin-left: 5px;
+		margin-right: 5px;
+		margin-top: 5px;
+		margin-bottom: 0px;
+		padding: 5px;
+		background: #FFFFFF;
+		border: 1px solid #C0C0C0;
 	}
 	
 	.updated {
-	margin-left: 5px;
-	margin-right: 5px;
-	margin-top: 0px;
-	margin-bottom: 0px;
-	padding: 5px;
-	background: #FFFFFF;
-	border-left: 1px solid #C0C0C0;
-	border-right: 1px solid #C0C0C0;
-	border-bottom: 1px solid #C0C0C0;
+		margin-left: 5px;
+		margin-right: 5px;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		padding: 5px;
+		background: #FFFFFF;
+		border-left: 1px solid #C0C0C0;
+		border-right: 1px solid #C0C0C0;
+		border-bottom: 1px solid #C0C0C0;
 	}
 	
 	.sidenav h4, p, label {
-	font-family: 'Open Sans';
-	margin-bottom: 0px;
-	margin-top: 0px;
+		font-family: 'Open Sans';
+		margin-bottom: 0px;
+		margin-top: 0px;
 	}
 	
 	.summary p {
-	font-size: 0.75em;
-	color: #696969;
+		font-size: 0.75em;
+		color: #696969;
 	}
 	 
 	.sidenav label {
-	font-size: 0.75em;
-	color: #696969;
+		font-size: 0.75em;
+		color: #696969;
 	}	
 	 
 	.updated p {
-	font-size: 0.70em;
-	color: #696969;
+		font-size: 0.70em;
+		color: #696969;
 	}	 
 	  
 	.sidenav a:visited {
-	color: #004AD4;
+		color: #004AD4;
 	}
 	
 	.tags {
-	color: #004AD4;
-	text-decoration: underline;
+		color: #004AD4;
+		text-decoration: underline;
 	}
 	  
 	 /* Style the main */
 	.main {
-	height:100%;
-    margin-left: 210px;
+		height:100%;
+		margin-left: 210px;
 	}
 	
 	/*Style Legend Box*/
 	.legendbox {
-	position: absolute;
-	background-color: #FFFFFF;
-    bottom: 0px;
-    right: 0px;
-    width: 210px;
-    height: 150px;
-    border: 1px solid #696969;
-	overflow: auto;
+		position: absolute;
+		background-color: #FFFFFF;
+		bottom: 0px;
+		right: 0px;
+		width: 210px;
+		height: 150px;
+		border: 1px solid #696969;
+		overflow: auto;
 	}
 	
 	.legendbox p {
-	margin: 0px;
-	font-family: 'Open Sans';
-	font-weight: bold;
-	font-size: 0.75em;
-	color: #000000;
-	text-align:center;
+		margin: 0px;
+		font-family: 'Open Sans';
+		font-weight: bold;
+		font-size: 0.75em;
+		color: #000000;
+		text-align:center;
 	}
 	
 	/*Style legend table*/
 	.legendTable {
-	font-family: 'Open Sans';
-	font-size: 0.70em;
-	margin-left: 10px;
-	padding: 1px;
-	width:90%;
-	height:10px;
-	color: #696969;
-	empty-cells: show;
+		font-family: 'Open Sans';
+		font-size: 0.70em;
+		margin-left: 10px;
+		padding: 1px;
+		width:90%;
+		height:10px;
+		color: #696969;
+		empty-cells: show;
 	}
 	
 	.legendTable td {
-	 padding: 2px;
-	 text-align: left;
+		padding: 2px;
+		text-align: left;
 	}
 	
 	#color1 {
-	width: 20px;
-	background-color: #004AD4;
+		width: 20px;
+		background-color: #004AD4;
 	}
 	
 	/* Style buttons */
-	
 	.default {
-	  width: 150px;
-      background-color: #C0C0C0;
-      border: 1px outset #696969;
-      color: #696969;
-      padding: 2px 2px;
-	  font-family: 'Open Sans';
-      text-align: center;
-      text-decoration: bold;
-	  margin: 2px 2px;
-      text-align: center;
-      cursor: pointer;
-      font-size: 0.7em;
+		width: 150px;
+		background-color: #C0C0C0;
+		border: 1px outset #696969;
+		color: #696969;
+		padding: 2px 2px;
+		font-family: 'Open Sans';
+		text-align: center;
+		text-decoration: bold;
+		margin: 2px 2px;
+		text-align: center;
+		cursor: pointer;
+		font-size: 0.7em;
     }
 	
 	.default:active {
-	background-color: #696969;
-	border: 1px inset #696969;
-	color: #C0C0C0;
+		background-color: #696969;
+		border: 1px inset #696969;
+		color: #C0C0C0;
 	}
 	
-	  .active {
-      color: #000000;
-      background-color: #89BAF4;
+	.active {
+		color: #000000;
+		background-color: #89BAF4;
     }
     </style>
+	
     <script src="https://js.arcgis.com/4.7/"></script>
     <script>
+	// Javascript Copyright S.L. Gidley 2018. This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.//
       var map, csv;
       require([
         "esri/Map", 
@@ -246,27 +252,27 @@
 		button1Click.addEventListener("click", mapChangeOne);
 		
 		function mapChangeOne (){
-		var webmap = webmaps[0]
-		view.map = webmap;
-		button5Click.classList.remove("active");
-		button4Click.classList.remove("active");
-		button3Click.classList.remove("active");
-		button2Click.classList.remove("active");
-		button1Click.classList.add("active");
-		
-		legendTitle.innerHTML = "E-Rate Info. by State";
-		legendColor1.style.backgroundColor = "#004AD4";
-		legendLabel1.innerHTML = "States";
-		legendColor2.style.backgroundColor = "#FFFFFF";
-		legendLabel2.innerHTML = "&nbsp";
-		legendColor3.style.backgroundColor = "#FFFFFF";
-		legendLabel3.innerHTML = "&nbsp";
-		legendColor4.style.backgroundColor = "#FFFFFF";
-		legendLabel4.innerHTML = "&nbsp";
-		legendColor5.style.backgroundColor = "#FFFFFF";
-		legendLabel5.innerHTML = "&nbsp";
-		legendColor6.style.backgroundColor = "#FFFFFF";
-		legendLabel6.innerHTML = "&nbsp";
+			var webmap = webmaps[0]
+			view.map = webmap;
+			button5Click.classList.remove("active");
+			button4Click.classList.remove("active");
+			button3Click.classList.remove("active");
+			button2Click.classList.remove("active");
+			button1Click.classList.add("active");
+			
+			legendTitle.innerHTML = "E-Rate Info. by State";
+			legendColor1.style.backgroundColor = "#004AD4";
+			legendLabel1.innerHTML = "States";
+			legendColor2.style.backgroundColor = "#FFFFFF";
+			legendLabel2.innerHTML = "&nbsp";
+			legendColor3.style.backgroundColor = "#FFFFFF";
+			legendLabel3.innerHTML = "&nbsp";
+			legendColor4.style.backgroundColor = "#FFFFFF";
+			legendLabel4.innerHTML = "&nbsp";
+			legendColor5.style.backgroundColor = "#FFFFFF";
+			legendLabel5.innerHTML = "&nbsp";
+			legendColor6.style.backgroundColor = "#FFFFFF";
+			legendLabel6.innerHTML = "&nbsp";
 		}
 		
 		//Set the map id, button, and legend if the second button is clicked//
@@ -274,27 +280,27 @@
 		button2Click.addEventListener("click", mapChangeTwo);
 		
 		function mapChangeTwo (){
-		var webmap = webmaps[1]
-		view.map = webmap;
-		button5Click.classList.remove("active");
-		button4Click.classList.remove("active");
-		button3Click.classList.remove("active");
-		button2Click.classList.add("active");
-		button1Click.classList.remove("active");
-		
-		legendTitle.innerHTML = "Number of Applicants by State";
-		legendColor1.style.backgroundColor = "rgb(59, 93, 135)";
-		legendLabel1.innerHTML = "1,701 - 2,900 Applicants";
-		legendColor2.style.backgroundColor = "rgb(61, 109, 162)";
-		legendLabel2.innerHTML = "1,101 - 1,700 Applicants";
-		legendColor3.style.backgroundColor = "rgb(62, 124, 190)";
-		legendLabel3.innerHTML = "601 - 1,100 Applicants";
-		legendColor4.style.backgroundColor = "rgb(179, 167, 82)";
-		legendLabel4.innerHTML = "301 - 600 Applicants";
-		legendColor5.style.backgroundColor = "rgb(204, 190, 106)";
-		legendLabel5.innerHTML = "101 - 300 Applicants";
-		legendColor6.style.backgroundColor = "rgb(255, 236, 153)";
-		legendLabel6.innerHTML = "0 - 100 Applicants";
+			var webmap = webmaps[1]
+			view.map = webmap;
+			button5Click.classList.remove("active");
+			button4Click.classList.remove("active");
+			button3Click.classList.remove("active");
+			button2Click.classList.add("active");
+			button1Click.classList.remove("active");
+			
+			legendTitle.innerHTML = "Number of Applicants by State";
+			legendColor1.style.backgroundColor = "rgb(59, 93, 135)";
+			legendLabel1.innerHTML = "1,701 - 2,900 Applicants";
+			legendColor2.style.backgroundColor = "rgb(61, 109, 162)";
+			legendLabel2.innerHTML = "1,101 - 1,700 Applicants";
+			legendColor3.style.backgroundColor = "rgb(62, 124, 190)";
+			legendLabel3.innerHTML = "601 - 1,100 Applicants";
+			legendColor4.style.backgroundColor = "rgb(179, 167, 82)";
+			legendLabel4.innerHTML = "301 - 600 Applicants";
+			legendColor5.style.backgroundColor = "rgb(204, 190, 106)";
+			legendLabel5.innerHTML = "101 - 300 Applicants";
+			legendColor6.style.backgroundColor = "rgb(255, 236, 153)";
+			legendLabel6.innerHTML = "0 - 100 Applicants";
 		}
 		
 		//Set the map id, button, and legend if the third button is clicked//
@@ -302,27 +308,27 @@
 		button3Click.addEventListener("click", mapChangeThree);
 		
 		function mapChangeThree (){
-		var webmap = webmaps[2]
-		view.map = webmap;
-		button5Click.classList.remove("active");
-		button4Click.classList.remove("active");
-		button3Click.classList.add("active");
-		button2Click.classList.remove("active");
-		button1Click.classList.remove("active");
-		
-		legendTitle.innerHTML = "Total Requested Funding by State";
-		legendColor1.style.backgroundColor = "rgb(59, 93, 135)";
-		legendLabel1.innerHTML = "$194,602,001 - $353,952,000";
-		legendColor2.style.backgroundColor = "rgb(61, 109, 162)";
-		legendLabel2.innerHTML = "$78,729,001 - $194,602,000";
-		legendColor3.style.backgroundColor = "rgb(62, 124, 190)";
-		legendLabel3.innerHTML = "$46,536,001 - $78,729,000";
-		legendColor4.style.backgroundColor = "rgb(179, 167, 82)";
-		legendLabel4.innerHTML = "$25,363,001 - $46,536,000";
-		legendColor5.style.backgroundColor = "rgb(204, 190, 106)";
-		legendLabel5.innerHTML = "$10,278,001 - $25,363,000";
-		legendColor6.style.backgroundColor = "rgb(255, 236, 153)";
-		legendLabel6.innerHTML = "$250,000 - $10,278,001";
+			var webmap = webmaps[2]
+			view.map = webmap;
+			button5Click.classList.remove("active");
+			button4Click.classList.remove("active");
+			button3Click.classList.add("active");
+			button2Click.classList.remove("active");
+			button1Click.classList.remove("active");
+			
+			legendTitle.innerHTML = "Total Requested Funding by State";
+			legendColor1.style.backgroundColor = "rgb(59, 93, 135)";
+			legendLabel1.innerHTML = "$194,602,001 - $353,952,000";
+			legendColor2.style.backgroundColor = "rgb(61, 109, 162)";
+			legendLabel2.innerHTML = "$78,729,001 - $194,602,000";
+			legendColor3.style.backgroundColor = "rgb(62, 124, 190)";
+			legendLabel3.innerHTML = "$46,536,001 - $78,729,000";
+			legendColor4.style.backgroundColor = "rgb(179, 167, 82)";
+			legendLabel4.innerHTML = "$25,363,001 - $46,536,000";
+			legendColor5.style.backgroundColor = "rgb(204, 190, 106)";
+			legendLabel5.innerHTML = "$10,278,001 - $25,363,000";
+			legendColor6.style.backgroundColor = "rgb(255, 236, 153)";
+			legendLabel6.innerHTML = "$250,000 - $10,278,001";
 		}
 		
 		//Set the map id, button, and legend if the fourth button is clicked//
@@ -330,27 +336,27 @@
 		button4Click.addEventListener("click", mapChangeFour);
 		
 		function mapChangeFour (){
-		var webmap = webmaps[3]
-		view.map = webmap;
-		button5Click.classList.remove("active");
-		button4Click.classList.add("active");
-		button3Click.classList.remove("active");
-		button2Click.classList.remove("active");
-		button1Click.classList.remove("active");
-		
-		legendTitle.innerHTML = "Avg. Funding per Applicant";
-		legendColor1.style.backgroundColor = "rgb(59, 93, 135)";
-		legendLabel1.innerHTML = "$210,601 - $1,322,400";
-		legendColor2.style.backgroundColor = "rgb(61, 109, 162)";
-		legendLabel2.innerHTML = "$144,201- $210,600";
-		legendColor3.style.backgroundColor = "rgb(62, 124, 190)";
-		legendLabel3.innerHTML = "$100,301 - $144,200";
-		legendColor4.style.backgroundColor = "rgb(179, 167, 82)";
-		legendLabel4.innerHTML = "$57,301 - $100,300";
-		legendColor5.style.backgroundColor = "rgb(204, 190, 106)";
-		legendLabel5.innerHTML = "$38,401 - $57,300";
-		legendColor6.style.backgroundColor = "rgb(255, 236, 153)";
-		legendLabel6.innerHTML = "$20,200 - $38,400";
+			var webmap = webmaps[3]
+			view.map = webmap;
+			button5Click.classList.remove("active");
+			button4Click.classList.add("active");
+			button3Click.classList.remove("active");
+			button2Click.classList.remove("active");
+			button1Click.classList.remove("active");
+			
+			legendTitle.innerHTML = "Avg. Funding per Applicant";
+			legendColor1.style.backgroundColor = "rgb(59, 93, 135)";
+			legendLabel1.innerHTML = "$210,601 - $1,322,400";
+			legendColor2.style.backgroundColor = "rgb(61, 109, 162)";
+			legendLabel2.innerHTML = "$144,201- $210,600";
+			legendColor3.style.backgroundColor = "rgb(62, 124, 190)";
+			legendLabel3.innerHTML = "$100,301 - $144,200";
+			legendColor4.style.backgroundColor = "rgb(179, 167, 82)";
+			legendLabel4.innerHTML = "$57,301 - $100,300";
+			legendColor5.style.backgroundColor = "rgb(204, 190, 106)";
+			legendLabel5.innerHTML = "$38,401 - $57,300";
+			legendColor6.style.backgroundColor = "rgb(255, 236, 153)";
+			legendLabel6.innerHTML = "$20,200 - $38,400";
 		}
 		
 		//Set the map id, button, and legend if the fifth button is clicked//
@@ -358,27 +364,27 @@
 		button5Click.addEventListener("click", mapChangeFive);
 		
 		function mapChangeFive (){
-		var webmap = webmaps[4]
-		view.map = webmap;
-		button5Click.classList.add("active");
-		button4Click.classList.remove("active");
-		button3Click.classList.remove("active");
-		button2Click.classList.remove("active");
-		button1Click.classList.remove("active");
-		
-		legendTitle.innerHTML = "Avg. Funding per Student";
-		legendColor1.style.backgroundColor = "rgb(59, 93, 135)";
-		legendLabel1.innerHTML = "$82.01 - $165.00";
-		legendColor2.style.backgroundColor = "rgb(61, 109, 162)";
-		legendLabel2.innerHTML = "$35.01 - $82.00";
-		legendColor3.style.backgroundColor = "rgb(62, 124, 190)";
-		legendLabel3.innerHTML = "$20.01 - $35.00";
-		legendColor4.style.backgroundColor = "rgb(179, 167, 82)";
-		legendLabel4.innerHTML = "$11.61 - $20.00";
-		legendColor5.style.backgroundColor = "rgb(204, 190, 106)";
-		legendLabel5.innerHTML = "$5.91 - $11.60";
-		legendColor6.style.backgroundColor = "rgb(255, 236, 153)";
-		legendLabel6.innerHTML = "$0.50 - $5.90";
+			var webmap = webmaps[4]
+			view.map = webmap;
+			button5Click.classList.add("active");
+			button4Click.classList.remove("active");
+			button3Click.classList.remove("active");
+			button2Click.classList.remove("active");
+			button1Click.classList.remove("active");
+			
+			legendTitle.innerHTML = "Avg. Funding per Student";
+			legendColor1.style.backgroundColor = "rgb(59, 93, 135)";
+			legendLabel1.innerHTML = "$82.01 - $165.00";
+			legendColor2.style.backgroundColor = "rgb(61, 109, 162)";
+			legendLabel2.innerHTML = "$35.01 - $82.00";
+			legendColor3.style.backgroundColor = "rgb(62, 124, 190)";
+			legendLabel3.innerHTML = "$20.01 - $35.00";
+			legendColor4.style.backgroundColor = "rgb(179, 167, 82)";
+			legendLabel4.innerHTML = "$11.61 - $20.00";
+			legendColor5.style.backgroundColor = "rgb(204, 190, 106)";
+			legendLabel5.innerHTML = "$5.91 - $11.60";
+			legendColor6.style.backgroundColor = "rgb(255, 236, 153)";
+			legendLabel6.innerHTML = "$0.50 - $5.90";
 		}
 		
 		//Setting up the scale bar//
@@ -398,65 +404,68 @@
     </script>
   </head>
   <body>
-<div class="sidenav">
-	<div class="logo">
-		<img src="logo-footer.png">
-	</div>
+  	<!-- HTML Copyright S.L. Gidley 2018. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License. -->
+	<div class="sidenav">
+		<div class="logo">
+			<img src="logo-footer.png">
+		</div>
 	
-	<div class="sidetitle">
-	<h4>E-Rate Applicants: Aggregated by State</h4>
-	</div>
-	<div class="summary">
-	<p>Choropleth maps help visualize aggregate data, in this case applications for funding by state. How the data is aggregated can greatly affect the appearance of the maps and the conclusions drawn from the data. Below are different ways of aggregating the data.</p> 
-	<br />
-      <button id="button1" class="default active">No Choropleth</button>
-      <button id="button2" class="default">Number of Applications</button>
-      <button id="button3" class="default">Total Requested Funding</button>
-	  <button id="button4" class="default">Avg. Funding per App</button>
-	  <button id="button5" class="default">Avg. Funding per Student</button>
-	  <br />
-	  <br />
-	<p>Data from USAC's <a href="https://opendata.usac.org/">Open Data Portal.</a></p>
-	</div>
-	<div class="updated">
-	<p><b>Updated:</b> June 26, 2018</p>
-	<br />
-	<p><b>Tags:</b> <font class="tags">schools</font>, <font class="tags">libraries</font>, <font class="tags">schools and libraries</font>, <font class="tags">erate</font>, <font class="tags">discount on services</font>, <font class="tags">basic services</font>, <font class="tags">applicant information</font>, <font class="tags">visualization</font>, <font class="tags">choropleth</font>, <font class="tags">usac</font>, <font class="tags">universal service fund</font></p>
-	</div>
+		<div class="sidetitle">
+			<h4>E-Rate Applicants: Aggregated by State</h4>
+		</div>
 	
-</div>
-	<div id="map" class="main">
-		<div class="legendbox">
-			<p id="legendTitle">E-Rate Info. by State</p>
-			<div>
-				<table class="legendTable">
-					<tr>
-						<td id="color1"></td>
-						<td id="label1">States</td>
-					</tr>
-					<tr>
-						<td id="color2"></td>
-						<td id="label2">&nbsp;</td>
-					</tr>
-					<tr>
-						<td id="color3"></th>
-						<td id="label3">&nbsp;</td>
-					</tr>
-					<tr>
-						<td id="color4"></td>
-						<td id="label4">&nbsp;</td>
-					</tr>
-					<tr>
-						<td id="color5"></td>
-						<td id="label5">&nbsp;</td>
-					</tr>
-					<tr>
-						<td id="color6"></td>
-						<td id="label6">&nbsp;</td>
-					</tr>
-				</table>
-			</div>
+		<div class="summary">
+			<p>Choropleth maps help visualize aggregate data, in this case applications for funding by state. How the data is aggregated can greatly affect the appearance of the maps and the conclusions drawn from the data. Explore different ways of aggregating the data below.</p> 
+			<br />
+			  <button id="button1" class="default active">No Choropleth</button>
+			  <button id="button2" class="default">Number of Applications</button>
+			  <button id="button3" class="default">Total Requested Funding</button>
+			  <button id="button4" class="default">Avg. Funding per App</button>
+			  <button id="button5" class="default">Avg. Funding per Student</button>
+			  <br />
+			  <br />
+			<p>Data from USAC's <a href="https://opendata.usac.org/">Open Data Portal.</a></p>
+		</div>
+		
+		<div class="updated">
+			<p><b>Updated:</b> June 26, 2018</p>
+			<br />
+			<p><b>Tags:</b> <font class="tags">schools</font>, <font class="tags">libraries</font>, <font class="tags">schools and libraries</font>, <font class="tags">erate</font>, <font class="tags">discount on services</font>, <font class="tags">basic services</font>, <font class="tags">applicant information</font>, <font class="tags">visualization</font>, <font class="tags">choropleth</font>, <font class="tags">usac</font>, <font class="tags">universal service fund</font></p>
 		</div>
 	</div>
-  </body>
+	
+		<div id="map" class="main">
+			<div class="legendbox">
+				<p id="legendTitle">E-Rate Info. by State</p>
+				<div>
+					<table class="legendTable">
+						<tr>
+							<td id="color1"></td>
+							<td id="label1">States</td>
+						</tr>
+						<tr>
+							<td id="color2"></td>
+							<td id="label2">&nbsp;</td>
+						</tr>
+						<tr>
+							<td id="color3"></th>
+							<td id="label3">&nbsp;</td>
+						</tr>
+						<tr>
+							<td id="color4"></td>
+							<td id="label4">&nbsp;</td>
+						</tr>
+						<tr>
+							<td id="color5"></td>
+							<td id="label5">&nbsp;</td>
+						</tr>
+						<tr>
+							<td id="color6"></td>
+							<td id="label6">&nbsp;</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>

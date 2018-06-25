@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/css/esri.css">
 	<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
     <style>
-	  html, body{
+	
+	/*CSS Copyright S.L. Gidley 2018. This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.*/
+	
+	/*Cover entire screen*/
+	html, body{
         height: 100%;
         width: 100%;
         margin: 0;
@@ -15,103 +19,98 @@
       }
 	  
 	/* Style the body */	  
-      body {
-        background-color: #f6F6F6;
-        overflow: hidden;
-        font-family: "Trebuchet MS";
-      }
-
+    body {
+		background-color: #f6F6F6;
+		overflow: hidden;
+		font-family: 'Open Sans';
+    }
 	 	 
 	/* Style the side navigation */
 	.sidenav {
-    height: 100%;
-    width: 205px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-	padding-right: 5px;
-    background-color: #F6F6F6;
-    overflow-x: hidden;
-	border-color: #004AD4;
-	border-width: 3px;
-	border-style: solid;
+		height: 100%;
+		width: 205px;
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		padding-right: 5px;
+		background-color: #F6F6F6;
+		overflow-x: hidden;
+		border-color: #004AD4;
+		border-width: 3px;
+		border-style: solid;
 	}
 	
 	.sidetitle {
-	border-bottom: 1px inset #696969;
-	margin-left: 5px;
-	margin-right: 5px;
-	margin-top: 7px;
-	margin-bottom: 5px;
+		border-bottom: 1px inset #696969;
+		margin-left: 5px;
+		margin-right: 5px;
+		margin-top: 7px;
+		margin-bottom: 5px;
 	}
 	
 	.logo {
-	margin: 5px;
+		margin: 5px;
 	}
 	
 	.summary {
-	margin-left: 5px;
-	margin-right: 5px;
-	margin-top: 5px;
-	margin-bottom: 0px;
-	padding: 5px;
-	background: #FFFFFF;
-	border: 1px solid #C0C0C0;
+		margin-left: 5px;
+		margin-right: 5px;
+		margin-top: 5px;
+		margin-bottom: 0px;
+		padding: 5px;
+		background: #FFFFFF;
+		border: 1px solid #C0C0C0;
 	}
 	
 	.updated {
-	margin-left: 5px;
-	margin-right: 5px;
-	margin-top: 0px;
-	margin-bottom: 0px;
-	padding: 5px;
-	background: #FFFFFF;
-	border-left: 1px solid #C0C0C0;
-	border-right: 1px solid #C0C0C0;
-	border-bottom: 1px solid #C0C0C0;
+		margin-left: 5px;
+		margin-right: 5px;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		padding: 5px;
+		background: #FFFFFF;
+		border-left: 1px solid #C0C0C0;
+		border-right: 1px solid #C0C0C0;
+		border-bottom: 1px solid #C0C0C0;
 	}
 	
 	.sidenav h4, p {
-	font-family: 'Open Sans';
-	margin-bottom: 0px;
-	margin-top: 0px;
+		font-family: 'Open Sans';
+		margin-bottom: 0px;
+		margin-top: 0px;
 	}
 	
 	.summary p {
-	font-size: 0.75em;
-	color: #696969;
+		font-size: 0.75em;
+		color: #696969;
 	}
 	 
 	.updated p {
-	font-size: 0.70em;
-	color: #696969;
+		font-size: 0.70em;
+		color: #696969;
 	}	 
 	  
 	.sidenav a:visited {
-	color: #004AD4;
+		color: #004AD4;
 	}
 	
 	.tags {
-	color: #004AD4;
-	text-decoration: underline;
+		color: #004AD4;
+		text-decoration: underline;
 	}
 	  
 	 /* Style the main */
 	.main {
-	height:100%;
-    margin-left: 210px;
+		height:100%;
+		margin-left: 210px;
 	}
 	
-	/* Style the pop-up title */
-	.titlepane, .sizer{
-	background-color:#004AD4;
-	}
 	
-
     </style>
     <script src="https://js.arcgis.com/3.24/"></script>
     <script>
+	// Javascript Copyright S.L. Gidley 2018. This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.//
       var map, csv;
       require([
         "esri/map", 
@@ -188,8 +187,6 @@
 			  attachTo:"top-right",
 			  scalebarUnit: "dual"
 			});
-			
-			
 		});
       });
 	  
@@ -197,31 +194,33 @@
   </head>
 
   <body>
+	<!-- HTML Copyright S.L. Gidley 2018. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License. -->
+  
+	<div class="sidenav">
+		<div class="logo">
+			<img src="logo-footer.png">
+		</div>
+		
+		<div class="sidetitle">
+			<h4>E-Rate Request for Discount on Services: Basic Information</h4>
+		</div>
 
-<div class="sidenav">
-	<div class="logo">
-		<img src="logo-footer.png">
-	</div>
-	
-	<div class="sidetitle">
-	<h4>E-Rate Request for Discount on Services: Basic Information</h4>
+		<div class="summary">
+			<p>This map shows each individual application received by the E-Rate program in Fiscal Year 2018. Clicking on the points displays a pop-up with information provided by applicants on FCC Form 470.</p> 
+			<br />
+			<p>Additional information can be found on the USAC's <a href="https://opendata.usac.org/">Open Data Portal.</a></p>
+		</div>
+		
+		<div class="updated">
+			<p><b>Updated:</b> June 26, 2018</p>
+			<br />
+			<p><b>Tags:</b> <font class="tags">schools</font>, <font class="tags">libraries</font>, <font class="tags">schools and libraries</font>, <font class="tags">erate</font>, <font class="tags">discount on services</font>, <font class="tags">basic services</font>, <font class="tags">applicant information</font>, <font class="tags">visualization</font>, <font class="tags">point map</font>, <font class="tags">usac</font>, <font class="tags">universal service fund</font></p>
+		</div>
+		
 	</div>
 
-	<div class="summary">
-	<p>This map shows each individual application from schools and libraries recieved in Fiscal Year 2018. Clicking on the points displays a pop-up with information provided by applicants on FCC Form 470.</p> 
-	<br />
-	<p>Additional information can be found on the USAC's <a href="https://opendata.usac.org/">Open Data Portal.</a></p>
+	<div id="map" class="main">
 	</div>
-	<div class="updated">
-	<p><b>Updated:</b> June 26, 2018</p>
-	<br />
-	<p><b>Tags:</b> <font class="tags">schools</font>, <font class="tags">libraries</font>, <font class="tags">schools and libraries</font>, <font class="tags">erate</font>, <font class="tags">discount on services</font>, <font class="tags">basic services</font>, <font class="tags">applicant information</font>, <font class="tags">visualization</font>, <font class="tags">point map</font>, <font class="tags">usac</font>, <font class="tags">universal service fund</font></p>
-	</div>
-	
-</div>
-
-<div id="map" class="main">
-</div>
 
   </body>
 </html>
