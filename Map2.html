@@ -127,10 +127,10 @@
 	
 	/* Style buttons */
 	
-	  .default {
+	.default {
 	  width: 150px;
       background-color: #C0C0C0;
-      border: none;
+      border: 1px outset #696969;
       color: #696969;
       padding: 2px 2px;
 	  font-family: 'Open Sans';
@@ -142,7 +142,13 @@
       font-size: 0.7em;
     }
 	
-	  .active-map {
+	.default:active {
+	background-color: #696969;
+	border: 1px inset #696969;
+	color: #C0C0C0;
+	}
+	
+	  .active {
       color: #000000;
       background-color: #89BAF4;
     }
@@ -173,7 +179,10 @@
 		//Array holding all the webmap ids//
 		var webmapids = [
 		"d45e4120e9ea429abc27050fdb039258",
-		"de8075c151e745199c9eb51d92c00697"
+		"de8075c151e745199c9eb51d92c00697",
+		"d3d061ff3d3c44d899713818904766ff",
+		"5ae61728f5de40ba84aeb8941613735e",
+		"e425645a5c294e79b23e03a36eece331"
 		];
 		
 		//Creating multiple webmap instances//
@@ -192,6 +201,7 @@
         container: "map" 
 		});
 	     
+		//
 		  
 		//Set the map id if the first button is clicked//
 		var button1Click = document.getElementById("button1");
@@ -200,17 +210,25 @@
 		function mapChangeOne (){
 		var webmap = webmaps[0]
 		view.map = webmap;
-
+		button5Click.classList.remove("active");
+		button4Click.classList.remove("active");
+		button3Click.classList.remove("active");
+		button2Click.classList.remove("active");
+		button1Click.classList.add("active");
 		}
 		
 		//Set the map id if the second button is clicked//
 		var button2Click = document.getElementById("button2");
 		button2Click.addEventListener("click", mapChangeTwo);
-		button2Click.addEventListener("click", legend2);
 		
 		function mapChangeTwo (){
 		var webmap = webmaps[1]
 		view.map = webmap;
+		button5Click.classList.remove("active");
+		button4Click.classList.remove("active");
+		button3Click.classList.remove("active");
+		button2Click.classList.add("active");
+		button1Click.classList.remove("active");
 		}
 		
 		//Set the map id if the third button is clicked//
@@ -220,8 +238,40 @@
 		function mapChangeThree (){
 		var webmap = webmaps[2]
 		view.map = webmap;
+		button5Click.classList.remove("active");
+		button4Click.classList.remove("active");
+		button3Click.classList.add("active");
+		button2Click.classList.remove("active");
+		button1Click.classList.remove("active");
 		}
 		
+		//Set the map id if the third button is clicked//
+		var button4Click = document.getElementById("button4");
+		button4Click.addEventListener("click", mapChangeFour);
+		
+		function mapChangeFour (){
+		var webmap = webmaps[3]
+		view.map = webmap;
+		button5Click.classList.remove("active");
+		button4Click.classList.add("active");
+		button3Click.classList.remove("active");
+		button2Click.classList.remove("active");
+		button1Click.classList.remove("active");
+		}
+		
+		//Set the map id if the third button is clicked//
+		var button5Click = document.getElementById("button5");
+		button5Click.addEventListener("click", mapChangeFive);
+		
+		function mapChangeFive (){
+		var webmap = webmaps[4]
+		view.map = webmap;
+		button5Click.classList.add("active");
+		button4Click.classList.remove("active");
+		button3Click.classList.remove("active");
+		button2Click.classList.remove("active");
+		button1Click.classList.remove("active");
+		}
 		
 		//Setting up the scale bar//
 		var scaleBar = new ScaleBar ({
@@ -249,11 +299,16 @@
 	<h4>E-Rate Applicants: Aggregated by State</h4>
 	</div>
 	<div class="summary">
-	<p>Choropleth maps help visualize aggregate data, in this case applicant requests for funding aggregated by state. However, how the data is aggregated can greatly affect to appearance and conclusions drawn from the data. Click below to see how changing the aggregation changes the choropleth map.</p> 
-      <button id="button1" class="default active-map">No Choropleth</button>
+	<p>Choropleth maps help visualize aggregate data, in this case applications for funding by state. How the data is aggregated can greatly affect the appearance of the maps and the conclusions drawn from the data. Below are different ways of aggregating the data.</p> 
+	<br />
+      <button id="button1" class="default active">No Choropleth</button>
       <button id="button2" class="default">Number of Applications</button>
       <button id="button3" class="default">Total Requested Funding</button>
-	<p>Additional information can be found on the USAC's <a href="https://opendata.usac.org/">Open Data Portal.</a></p>
+	  <button id="button4" class="default">Avg. Funding per App</button>
+	  <button id="button5" class="default">Avg. Funding per Student</button>
+	  <br />
+	  <br />
+	<p>Data from USAC's <a href="https://opendata.usac.org/">Open Data Portal.</a></p>
 	</div>
 	<div class="updated">
 	<p><b>Updated:</b> June 26, 2018</p>
